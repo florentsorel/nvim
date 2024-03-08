@@ -4,6 +4,9 @@ vim.g.maplocalleader = " "
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 --  For more options, you can see `:help option-list`
+vim.opt.backup = false
+vim.opt.writebackup = false
+vim.opt.swapfile = false
 
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -53,6 +56,9 @@ vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
 
 vim.opt.list = false
+
+-- show only one status line for every buffer
+vim.opt.laststatus = 3
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -116,6 +122,8 @@ vim.keymap.set("n", "<C-1>", "<cmd>NvimTreeToggle<CR>")
 
 vim.keymap.set("n", "<leader>ge", "<cmd>GoIfErr<CR>")
 vim.keymap.set("n", "<leader>gt", "<cmd>GoAddTag<CR>")
+vim.keymap.set("n", "<leader>GG", "<cmd>GoRun<CR>")
+vim.keymap.set("n", "<leader>GT", "<cmd>GoTest<CR>")
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -161,6 +169,8 @@ require("lazy").setup({
     config = true,
     opts = {},
   },
+
+  { "github/copilot.vim" },
 
   require "user.plugins.lspconfig",
   require "user.plugins.debug",
