@@ -11,7 +11,6 @@ return { -- LSP Configuration & Plugins
     { "j-hui/fidget.nvim", opts = {} },
 
     { "b0o/schemastore.nvim" },
-    { "someone-stole-my-name/yaml-companion.nvim" },
   },
   config = function()
     -- Brief Aside: **What is LSP?**
@@ -231,65 +230,66 @@ return { -- LSP Configuration & Plugins
 
       tsserver = {},
 
-      yamlls = require("yaml-companion").setup({
-        builtin_matchers = {
-          kubernetes = { enabled = true },
-        },
-
-        -- schemas available in Telescope picker
-        -- :Telescope yaml_schema
-        schemas = {
-          {
-            name = "Docker Compose",
-            uri = "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json",
-          },
-          {
-            name = "Kustomization",
-            uri = "https://json.schemastore.org/kustomization.json",
-          },
-          {
-            name = "Helm",
-            uri = "https://json.schemastore.org/helmfile.json",
-          },
-          {
-            name = "GitHub Workflow",
-            uri = "https://json.schemastore.org/github-workflow.json",
-          },
-          {
-            name = "GitLab CI",
-            uri = "https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json",
-          },
-          {
-            name = "Liquibase",
-            uri = "https://json.schemastore.org/liquibase-3.2.json",
-          },
-        },
-
-        lspconfig = {
-          settings = {
-            yaml = {
-              validate = true,
-              schemaStore = {
-                enable = false,
-                url = "",
+      yamlls = {
+        settings = {
+          yaml = {
+            schemas = {
+              -- GitHub Workflow
+              ["https://json.schemastore.org/github-workflow.json"] = { "./.github/workflows/*" },
+              -- AWS CloudFormation
+              ["https://raw.githubusercontent.com/awslabs/goformation/master/schema/cloudformation.schema.json"] = {
+                "*.cf.json",
+                "*.cf.yml",
+                "*.cf.yaml",
+                "cloudformation.json",
+                "cloudformation.yml",
+                "cloudformation.yaml",
               },
-
-              -- schemas from store, matched by filename
-              -- loaded automatically
-              schemas = require("schemastore").yaml.schemas({
-                select = {
-                  "docker-compose.yml",
-                  "kustomization.yaml",
-                  "helmfile",
-                  "GitHub Workflow",
-                  "gitlab-ci",
-                  "Liquibase",
-                },
-              }),
+              --AWS CloudFormation Serverless Application Model (SAM)
+              ["https://raw.githubusercontent.com/aws/serverless-application-model/main/samtranslator/schema/schema.json"] = {
+                "infra/*.template.yml",
+                "infra/*.template.yaml",
+                "template.yaml",
+                "serverless.template",
+                "*.sam.json",
+                "*.sam.yml",
+                "*.sam.yaml",
+                "sam.json",
+                "sam.yml",
+                "sam.yaml",
+              },
+              -- AWS SAM CLI Samconfig
+              ["https://raw.githubusercontent.com/aws/aws-sam-cli/master/schema/samcli.json"] = {
+                "samconfig.toml",
+                "samconfig.yaml",
+                "samconfig.yml",
+              },
+              -- Docker Compose
+              ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = {
+                "**/docker-compose.yml",
+                "**/docker-compose.yaml",
+                "**/docker-compose.*.yml",
+                "**/docker-compose.*.yaml",
+                "**/compose.yml",
+                "**/compose.yaml",
+                "**/compose.*.yml",
+                "**/compose.*.yaml",
+              },
+              -- GitLab CI
+              ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = {
+                "*.gitlab-ci.yml",
+                "*.gitlab-ci.yaml",
+              },
+              -- Liquibase
+              ["https://json.schemastore.org/liquibase-3.2.json"] = {
+                "**/db/changelog/**/*.yaml",
+                "**/db/changelog/**/*.yml",
+                "**/db/changelog/**/*.json",
+              },
             },
           },
         },
-      }),
+      },
     }
 
     -- Ensure the servers and tools above are installed

@@ -61,15 +61,6 @@ return {
       return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
     end
 
-    -- get yaml schema for current buffer
-    local function get_schema()
-      local schema = require("yaml-companion").get_buf_schema(0)
-      if schema.result[1].name == "none" then
-        return ""
-      end
-      return schema.result[1].name
-    end
-
     local function escape_status()
       local ok, m = pcall(require, "better_escape")
       return ok and m.waiting and "✺" or ""
@@ -88,7 +79,7 @@ return {
         lualine_a = { branch, diagnostics },
         lualine_b = { mode },
         lualine_c = {},
-        lualine_x = { diff, spaces, "encoding", filetype, get_schema, escape_status },
+        lualine_x = { diff, spaces, "encoding", filetype, escape_status },
         lualine_y = { location },
         lualine_z = { progress },
       },
