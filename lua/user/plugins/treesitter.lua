@@ -25,6 +25,7 @@ return { -- Highlight, edit, and navigate code
         "kotlin",
         "luadoc",
         "markdown",
+        "markdown_inline",
         "rust",
         "scss",
         "sql",
