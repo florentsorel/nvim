@@ -234,6 +234,13 @@ return { -- LSP Configuration & Plugins
         settings = {
           yaml = {
             schemas = {
+              -- Kubernetes
+              ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.21.1-standalone-strict/all.json"] = {
+                ".k8s/*.yaml",
+                ".k8s/*.yml",
+                "k8s/*.yaml",
+                "k8s/*.yml",
+              },
               -- GitHub Workflow
               ["https://json.schemastore.org/github-workflow.json"] = { "./.github/workflows/*" },
               -- AWS CloudFormation
