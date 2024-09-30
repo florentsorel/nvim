@@ -102,7 +102,10 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   require "user.plugins.telescope",
 
+  require "user.plugins.auto_session",
+
   require "user.plugins.autopairs",
+  require "user.plugins.surround",
   require "user.plugins.indent_line",
   require "user.plugins.gitsigns",
   require "user.plugins.neo-tree",
