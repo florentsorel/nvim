@@ -3,7 +3,6 @@ return {
   "catppuccin/nvim",
   priority = 1000,
   init = function()
-    vim.cmd.colorscheme "catppuccin-mocha"
     require("catppuccin").setup({
       transparent_background = true,
       integrations = {
@@ -13,6 +12,7 @@ return {
         which_key = true,
       },
     })
+    vim.cmd.colorscheme "catppuccin-mocha"
 
     -- You can configure highlights by doing something like:
     vim.cmd.hi "Comment gui=none"
