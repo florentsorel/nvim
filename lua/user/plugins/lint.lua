@@ -8,6 +8,7 @@ return {
         go = { "golangcilint" },
         markdown = { "markdownlint" },
         dockerfile = { "hadolint" },
+        cloudformation = { "cfn-lint" },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
