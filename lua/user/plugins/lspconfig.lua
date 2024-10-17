@@ -195,6 +195,34 @@ return {
             },
           },
         },
+        yamlls = {
+          settings = {
+            yaml = {
+              schemas = {
+                -- GitHub Workflow
+                ["https://json.schemastore.org/github-workflow.json"] = { "./.github/workflows/*" },
+
+                -- Docker Compose
+                ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = {
+                  "**/docker-compose.yml",
+                  "**/docker-compose.yaml",
+                  "**/docker-compose.*.yml",
+                  "**/docker-compose.*.yaml",
+                  "**/compose.yml",
+                  "**/compose.yaml",
+                  "**/compose.*.yml",
+                  "**/compose.*.yaml",
+                },
+
+                -- SQLc
+                ["https://raw.githubusercontent.com/SchemaStore/schemastore/refs/heads/master/src/schemas/json/sqlc-2.0.json"] = {
+                  "**/sqlc.yml",
+                  "**/sqlc.yaml",
+                },
+              },
+            },
+          },
+        },
       }
 
       require("mason").setup()
@@ -210,6 +238,7 @@ return {
         -- Linter
         "hadolint",
         "golangci-lint",
+        "cfn-lint",
       })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
