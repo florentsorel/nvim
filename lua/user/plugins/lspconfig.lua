@@ -195,6 +195,27 @@ return {
             },
           },
         },
+        rust_analyzer = {
+          settings = {
+            ["rust-analyzer"] = {
+              cargo = {
+                loadOutDirsFromCheck = true,
+              },
+              procMacro = {
+                enable = true,
+              },
+              checkOnSave = {
+                command = "clippy",
+              },
+              inlayHints = {
+                chainingHints = true,
+                typeHints = true,
+                parameterHints = true,
+                maxLength = 120,
+              },
+            },
+          },
+        },
         yamlls = {
           settings = {
             yaml = {
@@ -236,8 +257,8 @@ return {
         "stylua",
 
         -- Linter
-        "hadolint",
         "golangci-lint",
+        "hadolint",
         "cfn-lint",
       })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
