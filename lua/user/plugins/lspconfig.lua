@@ -181,6 +181,7 @@ return {
             },
           },
         },
+        jsonls = {},
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -257,6 +258,7 @@ return {
         "stylua",
 
         -- Linter
+        "jsonlint",
         "golangci-lint",
         "hadolint",
         "cfn-lint",

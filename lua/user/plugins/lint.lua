@@ -6,6 +6,7 @@ return {
       local lint = require "lint"
       lint.linters_by_ft = {
         go = { "golangcilint" },
+        json = { "jsonlint" },
         rust = { "clippy" },
         markdown = { "markdownlint" },
         dockerfile = { "hadolint" },
