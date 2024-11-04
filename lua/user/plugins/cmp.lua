@@ -66,6 +66,18 @@ return {
         --  This will expand snippets if the LSP sent a snippet.
         ["<C-y>"] = cmp.mapping.confirm({ select = true }),
 
+        ["<Tab>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            local entry = cmp.get_selected_entry()
+            if not entry then
+              cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+            end
+            cmp.confirm()
+          else
+            fallback()
+          end
+        end, { "i", "s", "c" }),
+
         -- If you prefer more traditional completion keymaps,
         -- you can uncomment the following lines
         --['<CR>'] = cmp.mapping.confirm { select = true },
