@@ -75,6 +75,20 @@ vim.keymap.set("n", "<C-S-Down>", "<cmd>resize -1<CR>")
 vim.keymap.set("n", "<C-S-Left>", "<cmd>vertical resize -1<CR>")
 vim.keymap.set("n", "<C-S-Right>", "<cmd>vertical resize +1<CR>")
 
+-- Toggle floating window (lsp hover)
+vim.keymap.set("n", "K", function()
+  local open_floats = false
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    if vim.api.nvim_win_get_config(win).relative ~= "" then
+      vim.api.nvim_win_close(win, false)
+      open_floats = true
+    end
+  end
+  if not open_floats then
+    vim.lsp.buf.hover()
+  end
+end)
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
