@@ -75,6 +75,11 @@ vim.keymap.set("n", "<C-S-Down>", "<cmd>resize -1<CR>")
 vim.keymap.set("n", "<C-S-Left>", "<cmd>vertical resize -1<CR>")
 vim.keymap.set("n", "<C-S-Right>", "<cmd>vertical resize +1<CR>")
 
+-- Diagnostic keymaps
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
+
 -- Toggle floating window (lsp hover)
 vim.keymap.set("n", "K", function()
   local open_floats = false
@@ -88,6 +93,20 @@ vim.keymap.set("n", "K", function()
     vim.lsp.buf.hover()
   end
 end)
+
+vim.diagnostic.config({
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  float = {
+    show_header = true,
+    border = "rounded",
+    focusable = false,
+  },
+  virtual_text = {
+    spacing = 8,
+  },
+})
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
