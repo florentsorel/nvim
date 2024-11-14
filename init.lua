@@ -143,6 +143,13 @@ require("lazy").setup({
   -- Highlight todo, notes, etc in comments
   { "folke/todo-comments.nvim", event = "VimEnter", dependencies = { "nvim-lua/plenary.nvim" }, opts = { signs = false } },
 
+  {
+    "arnamak/stay-centered.nvim",
+    keys = {
+      { "<leader>st", '<cmd>lua require("stay-centered").toggle()<CR>', desc = "Enable / Disabled centered mode" },
+    },
+  },
+
   { "github/copilot.vim" },
 
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
