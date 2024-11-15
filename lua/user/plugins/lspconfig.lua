@@ -4,7 +4,18 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
-      { "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
+      -- NOTE: Must be loaded before dependants
+      {
+        "williamboman/mason.nvim",
+        config = true,
+        opts = {
+          ui = {
+            border = "rounded",
+            width = 0.8,
+            height = 0.8,
+          },
+        },
+      },
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
 
