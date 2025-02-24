@@ -70,7 +70,7 @@ return {
         --  This will expand snippets if the LSP sent a snippet.
         ["<C-y>"] = cmp.mapping.confirm({ select = true }),
 
-        ["<Tab>"] = cmp.mapping(function(fallback)
+        ["<C-k>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             local entry = cmp.get_selected_entry()
             if not entry then
