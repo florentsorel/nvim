@@ -234,5 +234,14 @@ require("lazy").setup({
   },
 })
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "*.c", "*.h", "*.cpp", "*.hpp" },
+  callback = function()
+    local save_cursor = vim.api.nvim_win_get_cursor(0)
+    vim.cmd "%!clang-format"
+    vim.api.nvim_win_set_cursor(0, save_cursor)
+  end,
+})
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

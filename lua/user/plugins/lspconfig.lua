@@ -152,6 +152,19 @@ return {
 
       local servers = {
         bashls = {},
+        clangd = {
+          cmd = { "clangd", "--background-index" },
+          filetypes = { "c", "cpp", "objc", "objcpp" },
+          capabilities = {
+            textDocument = {
+              completion = {
+                completionItem = {
+                  snippetSupport = true,
+                },
+              },
+            },
+          },
+        },
         dockerls = {},
         docker_compose_language_service = {},
         elixirls = {},
