@@ -285,7 +285,6 @@ return {
         "jsonlint",
         "golangci-lint",
         "hadolint",
-        "cfn-lint",
       })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
