@@ -167,7 +167,6 @@ return {
         },
         dockerls = {},
         docker_compose_language_service = {},
-        elixirls = {},
         gopls = {
           settings = {
             gopls = {
