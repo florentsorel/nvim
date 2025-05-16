@@ -72,11 +72,14 @@ vim.keymap.set("n", "<C-S-Left>", "<cmd>vertical resize -1<CR>")
 vim.keymap.set("n", "<C-S-Right>", "<cmd>vertical resize +1<CR>")
 
 -- Diagnostic keymaps
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
+vim.keymap.set("n", "[d", function()
+  vim.diagnostic.jump({ count = -1, float = true })
+end, { desc = "Go to previous [D]iagnostic message" })
+vim.keymap.set("n", "]d", function()
+  vim.diagnostic.jump({ count = 1, float = true })
+end, { desc = "Go to next [D]iagnostic message" })
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 
--- Toggle floating window (lsp hover)
 vim.keymap.set("n", "K", function()
   local open_floats = false
   for _, win in ipairs(vim.api.nvim_list_wins()) do
@@ -85,17 +88,31 @@ vim.keymap.set("n", "K", function()
       open_floats = true
     end
   end
-  if not open_floats then
+
+  if open_floats then
+    return
+  end
+
+  vim.lsp.buf_request(0, "textDocument/hover", vim.lsp.util.make_position_params(0, "utf-8"), function(_, result, _, _)
+    if not (result and result.contents) then
+      return
+    end
+
+    local markdown_lines = vim.lsp.util.convert_input_to_markdown_lines(result.contents)
+
+    if vim.tbl_isempty(markdown_lines) then
+      return
+    end
+
     local width = math.floor(vim.o.columns * 0.8)
     local height = math.floor(vim.o.lines * 0.3)
 
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    vim.lsp.util.open_floating_preview(markdown_lines, "markdown", {
       border = "rounded",
       max_width = width,
       max_height = height,
     })
-    vim.lsp.buf.hover()
-  end
+  end)
 end)
 
 vim.diagnostic.config({
