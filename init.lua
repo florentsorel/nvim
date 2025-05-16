@@ -66,10 +66,10 @@ vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 --  See `:help wincmd` for a list of all window commands
 
 -- Resize split with arrows
-vim.keymap.set("n", "<C-S-Up>", "<cmd>resize +1<CR>")
-vim.keymap.set("n", "<C-S-Down>", "<cmd>resize -1<CR>")
-vim.keymap.set("n", "<C-S-Left>", "<cmd>vertical resize -1<CR>")
-vim.keymap.set("n", "<C-S-Right>", "<cmd>vertical resize +1<CR>")
+vim.keymap.set("n", "<C-Up>", "<cmd>resize +1<CR>")
+vim.keymap.set("n", "<C-Down>", "<cmd>resize -1<CR>")
+vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -1<CR>")
+vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +1<CR>")
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", function()
