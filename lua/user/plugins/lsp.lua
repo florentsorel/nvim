@@ -195,7 +195,7 @@ return {
       lua_ls = {
         settings = {
           Lua = {
-            completion = { callSnipet = "Replace" },
+            completion = { callSnippet = "Replace" },
           },
         },
       },
