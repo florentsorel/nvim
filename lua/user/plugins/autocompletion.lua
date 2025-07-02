@@ -7,7 +7,7 @@ return {
   },
   opts = {
     keymap = {
-      preset = "cmdline",
+      preset = "default",
 
       ["<Up>"] = { "select_prev", "fallback" },
       ["<Down>"] = { "select_next", "fallback" },
