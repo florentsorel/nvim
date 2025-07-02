@@ -73,6 +73,7 @@ return {
           if vim.fn.has "nvim-0.11" == 1 then
             return client:supports_method(method, bufnr)
           else
+            --- @diagnostic disable-next-line
             return client.supports_method(method, { bufnr = bufnr })
           end
         end
