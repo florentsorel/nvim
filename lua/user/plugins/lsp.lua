@@ -155,6 +155,7 @@ return {
     local capabilities = require("blink.cmp").get_lsp_capabilities()
 
     local servers = {
+      bashls = {},
       gopls = {
         settings = {
           gopls = {
@@ -206,10 +207,12 @@ return {
       -- Formatter
       "gofumpt",
       "goimports",
+      "shfmt",
       "stylua",
 
       -- Linter
       "golangci-lint",
+      "shellcheck",
     })
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
