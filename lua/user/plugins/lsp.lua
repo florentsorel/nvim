@@ -156,6 +156,8 @@ return {
 
     local servers = {
       bashls = {},
+      dockerls = {},
+      docker_compose_language_service = {},
       gopls = {
         settings = {
           gopls = {
@@ -212,6 +214,7 @@ return {
 
       -- Linter
       "golangci-lint",
+      "hadolint",
       "shellcheck",
     })
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })

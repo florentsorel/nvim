@@ -9,6 +9,7 @@ return {
         "bash",
         "c",
         "diff",
+        "dockerfile",
         "lua",
         "luadoc",
         "markdown",
