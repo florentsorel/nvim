@@ -7,6 +7,7 @@ return {
       lint.linters_by_ft = {
         dockerfile = { "hadolint" },
         go = { "golangcilint" },
+        json = { "jsonlint" },
         sh = { "shellcheck" },
       }
 

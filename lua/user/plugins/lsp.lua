@@ -209,12 +209,14 @@ return {
       -- Formatter
       "gofumpt",
       "goimports",
+      "prettier",
       "shfmt",
       "stylua",
 
       -- Linter
       "golangci-lint",
       "hadolint",
+      "jsonlint",
       "shellcheck",
     })
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
