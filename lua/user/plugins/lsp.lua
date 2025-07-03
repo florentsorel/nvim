@@ -113,6 +113,7 @@ return {
         -- This may be unwanted, since they displace some of the code
         if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
           vim.lsp.inlay_hint.enable(true)
+
           map("<leader>th", function()
             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
           end, "[T]oggle Inlay [H]ints")
@@ -156,6 +157,19 @@ return {
     local capabilities = require("blink.cmp").get_lsp_capabilities()
 
     local servers = {
+      clangd = {
+        cmd = { "clangd", "--background-index" },
+        filetypes = { "c", "cpp", "objc", "objcpp" },
+        capabilities = {
+          textDocument = {
+            completion = {
+              completionItem = {
+                snippetSupport = true,
+              },
+            },
+          },
+        },
+      },
       bashls = {},
       dockerls = {},
       docker_compose_language_service = {},
@@ -229,6 +243,7 @@ return {
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       -- Formatter
+      "clang-format",
       "gofumpt",
       "goimports",
       "prettier",
