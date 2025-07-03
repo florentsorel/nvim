@@ -202,6 +202,27 @@ return {
           },
         },
       },
+      rust_analyzer = {
+        settings = {
+          ["rust-analyzer"] = {
+            cargo = {
+              loadOutDirsFromCheck = true,
+            },
+            procMacro = {
+              enable = true,
+            },
+            checkOnSave = {
+              command = "clippy",
+            },
+            inlayHints = {
+              chainingHints = true,
+              typeHints = true,
+              parameterHints = true,
+              maxLength = 120,
+            },
+          },
+        },
+      },
     }
 
     local ensure_installed = vim.tbl_keys(servers or {})

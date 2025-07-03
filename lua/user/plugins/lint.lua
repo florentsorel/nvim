@@ -8,6 +8,7 @@ return {
         dockerfile = { "hadolint" },
         go = { "golangcilint" },
         json = { "jsonlint" },
+        rust = { "clippy" },
         sh = { "shellcheck" },
       }
 
