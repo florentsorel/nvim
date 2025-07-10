@@ -32,7 +32,7 @@ return {
     },
     formatters = {
       ["clang-format"] = {
-        prepend_args = { "-style=Chromium" },
+        prepend_args = { "-style={BasedOnStyle: Chromium, SeparateDefinitionBlocks: Always, EmptyLineBeforeAccessModifier: LogicalBlock}" },
       },
     },
   },
