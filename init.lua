@@ -42,7 +42,7 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
-vim.keymap.set("i", "kj", "<Esc>")
+vim.keymap.set("i", "jj", "<Esc>")
 
 vim.keymap.set("n", "<C-Up>", "<cmd>resize +1<CR>")
 vim.keymap.set("n", "<C-Down>", "<cmd>resize -1<CR>")
