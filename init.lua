@@ -15,6 +15,9 @@ vim.schedule(function()
   vim.o.clipboard = "unnamedplus"
 end)
 
+vim.bo.shiftwidth = 4
+vim.bo.tabstop = 4
+vim.bo.expandtab = true
 vim.o.breakindent = true
 vim.o.undofile = true
 vim.o.ignorecase = true
