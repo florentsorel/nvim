@@ -58,7 +58,9 @@ return {
     end
 
     local spaces = function()
-      return "spaces: " .. vim.bo.shiftwidth
+      local expand = vim.bo.expandtab and "space" or "tab"
+      return expand .. ": " .. vim.bo.shiftwidth
+      -- return "spaces: " .. vim.bo.shiftwidth
     end
 
     local function escape_status()
