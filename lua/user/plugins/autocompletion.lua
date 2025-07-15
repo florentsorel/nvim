@@ -6,6 +6,9 @@ return {
     "folke/lazydev.nvim",
   },
   opts = {
+    appearance = {
+      nerd_font_variant = "mono",
+    },
     keymap = {
       preset = "default",
 
@@ -19,9 +22,6 @@ return {
 
       ["<C-b>"] = { "scroll_documentation_up", "fallback" },
       ["<C-f>"] = { "scroll_documentation_down", "fallback" },
-    },
-    appearance = {
-      nerd_font_variant = "mono",
     },
     completion = {
       documentation = { auto_show = false, auto_show_delay_ms = 100, window = { border = "rounded" } },
@@ -38,6 +38,7 @@ return {
         },
       },
     },
+    snippets = { preset = "luasnip" },
     sources = {
       default = { "lsp", "path", "snippets", "lazydev" },
       providers = {

@@ -26,6 +26,7 @@ require("lazy").setup({
   require "user.plugins.lsp",
   require "user.plugins.lint",
   require "user.plugins.autocompletion",
+  require "user.plugins.snippet",
   require "user.plugins.lazydev",
   require "user.plugins.trouble",
   require "user.plugins.conform",
