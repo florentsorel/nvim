@@ -30,6 +30,7 @@ require("lazy").setup({
   require "user.plugins.lazydev",
   require "user.plugins.trouble",
   require "user.plugins.conform",
+  require "user.plugins.markdown",
 
   require "user.plugins.other",
 
