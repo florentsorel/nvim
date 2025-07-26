@@ -6,4 +6,5 @@ return {
       { "<leader>st", '<cmd>lua require("stay-centered").toggle()<CR>', desc = "Enable / Disabled centered mode" },
     },
   },
+  { "github/copilot.vim" },
 }
