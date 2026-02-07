@@ -17,6 +17,7 @@ return {
         "markdown_inline",
         "query",
         "rust",
+        "toml",
         "vim",
         "vimdoc",
       },
