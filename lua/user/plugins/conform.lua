@@ -27,8 +27,15 @@ return {
     end,
     formatters_by_ft = {
       lua = { "stylua" },
-      json = { "prettier" },
       c = { "clang-format" },
+      css = { "prettier" },
+      html = { "prettier" },
+      javascript = { "prettier" },
+      javascriptreact = { "prettier" },
+      json = { "prettier" },
+      typescript = { "prettier" },
+      typescriptreact = { "prettier" },
+      vue = { "prettier" },
     },
     formatters = {
       ["clang-format"] = {

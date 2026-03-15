@@ -176,6 +176,11 @@ return {
       dockerls = {},
       docker_compose_language_service = {},
       elixirls = {},
+      eslint = {
+        settings = {
+          workingDirectory = { mode = "location" },
+        },
+      },
       gopls = {
         settings = {
           gopls = {
@@ -241,6 +246,8 @@ return {
           },
         },
       },
+      ts_ls = {},
+      vuels = {},
     }
 
     local ensure_installed = vim.tbl_keys(servers or {})
