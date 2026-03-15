@@ -10,6 +10,7 @@ return {
         "c",
         "diff",
         "dockerfile",
+        "elixir",
         "json",
         "lua",
         "luadoc",
