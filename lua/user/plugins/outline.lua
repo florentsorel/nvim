@@ -1,9 +1,5 @@
-return {
-  "hedyhli/outline.nvim",
-  lazy = true,
-  cmd = { "Outline", "OutlineOpen" },
-  keys = {
-    { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
-  },
-  opts = {},
-}
+vim.pack.add({ "https://github.com/hedyhli/outline.nvim" })
+
+require("outline").setup()
+
+vim.keymap.set("n", "<leader>o", "<cmd>Outline<cr>", { desc = "Toggle [O]utline" })

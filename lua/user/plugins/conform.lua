@@ -1,46 +1,34 @@
-return {
-  "stevearc/conform.nvim",
-  event = { "BufWritePre" },
-  cmd = { "ConformInfo" },
-  keys = {
-    {
-      "<leader>f",
-      function()
-        require("conform").format({ async = true, lsp_format = "fallback" })
-      end,
-      mode = "",
-      desc = "[F]ormat buffer",
+vim.pack.add({ "https://github.com/stevearc/conform.nvim" })
+
+require("conform").setup({
+  notify_on_error = false,
+  format_on_save = {
+    timeout_ms = 500,
+    lsp_format = "fallback",
+  },
+  formatters_by_ft = {
+    c = { "clang-format" },
+    cpp = { "clang-format" },
+    css = { "prettier" },
+    go = { "goimports", "gofumpt" },
+    html = { "prettier" },
+    javascript = { "prettier" },
+    javascriptreact = { "prettier" },
+    json = { "prettier" },
+    lua = { "stylua" },
+    sh = { "shfmt" },
+    typescript = { "prettier" },
+    typescriptreact = { "prettier" },
+    vue = { "prettier" },
+    yaml = { "prettier" },
+  },
+  formatters = {
+    ["clang-format"] = {
+      prepend_args = { "-style={BasedOnStyle: Chromium, SeparateDefinitionBlocks: Always, EmptyLineBeforeAccessModifier: LogicalBlock}" },
     },
   },
-  opts = {
-    notify_on_error = false,
-    format_on_save = function(bufnr)
-      local disable_filetypes = {}
-      if disable_filetypes[vim.bo[bufnr].filetype] then
-        return nil
-      else
-        return {
-          timeout_ms = 500,
-          lsp_format = "fallback",
-        }
-      end
-    end,
-    formatters_by_ft = {
-      lua = { "stylua" },
-      c = { "clang-format" },
-      css = { "prettier" },
-      html = { "prettier" },
-      javascript = { "prettier" },
-      javascriptreact = { "prettier" },
-      json = { "prettier" },
-      typescript = { "prettier" },
-      typescriptreact = { "prettier" },
-      vue = { "prettier" },
-    },
-    formatters = {
-      ["clang-format"] = {
-        prepend_args = { "-style={BasedOnStyle: Chromium, SeparateDefinitionBlocks: Always, EmptyLineBeforeAccessModifier: LogicalBlock}" },
-      },
-    },
-  },
-}
+})
+
+vim.keymap.set({ "n", "v" }, "<leader>f", function()
+  require("conform").format({ async = true, lsp_format = "fallback" })
+end, { desc = "[F]ormat buffer" })
