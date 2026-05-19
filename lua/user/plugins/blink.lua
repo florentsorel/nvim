@@ -1,5 +1,21 @@
 vim.pack.add({
-  { src = "https://github.com/saghen/blink.cmp", build = "cargo build --release" },
+  { src = "https://github.com/saghen/blink.cmp" },
+})
+
+-- vim.pack doesn't run build steps; compile the Rust fuzzy matcher on install/update.
+vim.api.nvim_create_autocmd("PackChanged", {
+  desc = "Build blink.cmp fuzzy matcher",
+  callback = function(args)
+    if args.data.spec.name ~= "blink.cmp" or args.data.kind == "delete" then
+      return
+    end
+    vim.notify("blink.cmp: building fuzzy matcher...", vim.log.levels.INFO)
+    vim.system({ "cargo", "build", "--release" }, { cwd = args.data.path }, function(out)
+      local level = out.code == 0 and vim.log.levels.INFO or vim.log.levels.ERROR
+      local msg = out.code == 0 and "blink.cmp: build complete" or ("blink.cmp build failed:\n" .. (out.stderr or ""))
+      vim.schedule(function() vim.notify(msg, level) end)
+    end)
+  end,
 })
 
 require("blink.cmp").setup({
