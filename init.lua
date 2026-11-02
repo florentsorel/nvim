@@ -58,6 +58,10 @@ local function update_winbar()
     if vim.api.nvim_win_get_config(win).relative ~= "" then
       goto continue
     end
+    -- Leave debugger windows alone: nvim-dap-view keeps its tabs in the winbar
+    if vim.bo[vim.api.nvim_win_get_buf(win)].filetype:match("^dap%-") then
+      goto continue
+    end
     if multiple_windows then
       vim.wo[win].winbar = win == vim.api.nvim_get_current_win() and "%=%m %f" or "%=%m %F"
     else
