@@ -89,6 +89,15 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 vim.keymap.set("i", "jj", "<Esc>")
 
+-- `ii` inserts the pointer character for the current filetype (^ in Odin, * elsewhere)
+vim.keymap.set("i", "ii", function()
+  return vim.bo.filetype == "odin" and "^" or "*"
+end, { expr = true, desc = "Insert pointer character" })
+
+vim.keymap.set("i", "iu", function()
+  return "&"
+end, { expr = true, desc = "Insert pointer reference character" })
+
 vim.keymap.set("n", "<C-Up>", "<cmd>resize +1<CR>")
 vim.keymap.set("n", "<C-Down>", "<cmd>resize -1<CR>")
 vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -1<CR>")
