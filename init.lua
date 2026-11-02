@@ -127,6 +127,12 @@ vim.api.nvim_create_user_command("PackUpdate", function()
   vim.pack.update()
 end, {})
 
+vim.filetype.add({
+  pattern = {
+    [".*/yamllint/config"] = "yaml",
+  },
+})
+
 -- Colorscheme
 require("user.plugins.catppuccin")
 
