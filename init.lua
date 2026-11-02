@@ -103,6 +103,12 @@ vim.keymap.set("n", "<C-Down>", "<cmd>resize -1<CR>")
 vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -1<CR>")
 vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +1<CR>")
 
+-- Ghostty sends Alt+Left/Right as <M-b>/<M-f> (readline style): move by word
+vim.keymap.set({ "n", "x", "o" }, "<M-f>", "w")
+vim.keymap.set({ "n", "x", "o" }, "<M-b>", "b")
+vim.keymap.set({ "i", "c" }, "<M-f>", "<S-Right>")
+vim.keymap.set({ "i", "c" }, "<M-b>", "<S-Left>")
+
 vim.keymap.set("n", "<leader>sm", function()
   local lines = vim.split(vim.fn.execute("messages"), "\n", { plain = true })
   vim.cmd("new")
