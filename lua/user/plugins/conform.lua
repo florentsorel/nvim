@@ -9,6 +9,7 @@ require("conform").setup({
   formatters_by_ft = {
     c = { "clang-format" },
     cpp = { "clang-format" },
+    cs = { "csharpier" },
     css = { "prettier" },
     go = { "goimports", "gofumpt" },
     html = { "prettier" },
@@ -24,7 +25,7 @@ require("conform").setup({
   },
   formatters = {
     ["clang-format"] = {
-      prepend_args = { "-style={BasedOnStyle: Chromium, SeparateDefinitionBlocks: Always, EmptyLineBeforeAccessModifier: LogicalBlock}" },
+      prepend_args = { "-style={BasedOnStyle: Chromium, SeparateDefinitionBlocks: Always, EmptyLineBeforeAccessModifier: LogicalBlock, DerivePointerAlignment: false, PointerAlignment: Right, AllowShortIfStatementsOnASingleLine: WithoutElse, IndentWidth: 4, AccessModifierOffset: -4}" },
     },
   },
 })
