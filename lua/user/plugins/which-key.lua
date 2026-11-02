@@ -4,8 +4,11 @@ require("which-key").setup({
   icons = {
     mappings = vim.g.have_nerd_font,
   },
+  triggers = {
+    { "<auto>", mode = "nxs" },
+  },
   spec = {
-    { "<leader>c", group = "[C]ode",     mode = { "n", "x" } },
+    { "<leader>c", group = "[C]ode", mode = { "n", "x" } },
     { "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
     { "<leader>s", group = "[S]earch" },
     { "<leader>t", group = "[T]oggle" },

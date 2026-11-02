@@ -157,6 +157,9 @@ require("user.plugins.indent-blankline")
 require("user.plugins.conform")
 require("user.plugins.lint")
 
+-- Debugger (after mason: adapters are installed through it)
+require("user.plugins.dap")
+
 -- Git
 require("user.plugins.gitsigns")
 

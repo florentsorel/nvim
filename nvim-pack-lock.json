@@ -57,6 +57,10 @@
       "rev": "63a3c6a80538de1003373a619e29aeda27809ad3",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
+    "mason-nvim-dap.nvim": {
+      "rev": "9a10e096703966335bd5c46c8c875d5b0690dade",
+      "src": "https://github.com/jay-babu/mason-nvim-dap.nvim"
+    },
     "mason-tool-installer.nvim": {
       "rev": "443f1ef8b5e6bf47045cb2217b6f748a223cf7dc",
       "src": "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim"
@@ -81,6 +85,14 @@
       "rev": "426dbebe06b5c69fd846ceb17b42e12f890aedf1",
       "src": "https://github.com/catppuccin/nvim"
     },
+    "nvim-dap": {
+      "rev": "cfa2d58f4537aca6ca83e2de1a0d9f1491121264",
+      "src": "https://github.com/mfussenegger/nvim-dap"
+    },
+    "nvim-dap-view": {
+      "rev": "b4486a6e83c45db4712849c09a76ef95b41a2133",
+      "src": "https://github.com/igorlfs/nvim-dap-view"
+    },
     "nvim-lint": {
       "rev": "eab58b48eb11d7745c11c505e0f3057165902461",
       "src": "https://github.com/mfussenegger/nvim-lint"
@@ -104,6 +116,10 @@
     "nvim-web-devicons": {
       "rev": "6e76c5e47e957fbf080b1fdac165c66dbd2e7cfb",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
+    },
+    "omnisharp-extended-lsp.nvim": {
+      "rev": "51e407a46ddb15e49727139b5b1ae3650cd6a069",
+      "src": "https://github.com/Hoffs/omnisharp-extended-lsp.nvim"
     },
     "outline.nvim": {
       "rev": "c293eb56db880a0539bf9d85b4a27816960b863e",
